@@ -1,6 +1,6 @@
 <!-- _articles.html.erb -->
 <% @articles.each do | article | %>
-<li>
+<div class="well">
 	<% if article.link[0..7] == "https://" %>
 		<p>HTTPS</p>
 		<%= link_to article.title, "http://#{article.link[7..-1]}" %>
@@ -10,5 +10,7 @@
 	<%else%>
 		<%= link_to article.title, "http://#{article.link}" %>
 	<%end%>
-</li>
+	<%= link_to 'Edit', edit_article_path(article) %>
+	<%= link_to "Delete", article, method: :delete, data: {confirm: 'You sure?'} %>
+</div>
 <%end%>
