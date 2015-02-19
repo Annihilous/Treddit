@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  before_filter :authenticate_user!, except: [:index, :show]
+
+
   before_action :all_articles, only: [:index, :create, :update, :destroy]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
