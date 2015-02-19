@@ -1,6 +1,14 @@
 <!-- _articles.html.erb -->
 <% @articles.each do | article | %>
 <li>
-	<b><%= article.title %></b>
+	<% if article.link[0..7] == "https://" %>
+		<p>HTTPS</p>
+		<%= link_to article.title, "http://#{article.link[7..-1]}" %>
+	<%elsif article.link[0..6] == "http://" %>
+		<p>HTTP</p>
+		<%= link_to article.title, "http://#{article.link[6..-1]}" %>
+	<%else%>
+		<%= link_to article.title, "http://#{article.link}" %>
+	<%end%>
 </li>
 <%end%>
