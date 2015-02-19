@@ -19,15 +19,14 @@
     <%= f.label :link %><br>
     <%= f.text_field :link %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+  <div class="field cant-see-me">
+    <%= f.number_field :user_id, value: current_user.id %>
   </div>
-  <div class="field">
+  <div class="field cant-see-me">
     <%= f.label :score %><br>
-    <%= f.number_field :score %>
-  </div>
+    <%= f.number_field :score, value: 0 %>
+  </div><br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Share" %>
   </div>
 <% end %>
