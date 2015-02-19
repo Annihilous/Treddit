@@ -2,17 +2,38 @@
 <html>
 <head>
   <title>Treddit</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>Marketplace</title>
+		  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		  <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"%>
+		  <%= csrf_meta_tags %>
 </head>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <%= link_to root_path, class: "btn btn-primary" do %>
+      	<%= image_tag "reddit_icon.png" %> Treddit
+      <% end %>
+      <%#= link_to "Users", users_path %>
+
+  <% if current_user != nil %>
+		<%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+	<%end%>
+     
+</nav>
+
+
 <body>
 
+
+
+
 <div class="container blue">
-<% if current_user != nil %>
-	<%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-default" %>
-<%end%>
-<%= yield %>
+	<%= yield %>
 </div>
 
 </body>
