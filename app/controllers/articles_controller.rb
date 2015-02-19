@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :all_articles, only: [:index, :create, :update, :destroy]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
@@ -62,6 +63,11 @@ class ArticlesController < ApplicationController
   end
 
   private
+
+    def all_articles
+      @articles = Article.all
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
