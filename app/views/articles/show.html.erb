@@ -2,6 +2,9 @@
 
 <p>
   <strong>Title:</strong>
+<div class="col-md-6">
+	<div class="well>"
+
   <%= @article.title %>
 </p>
 
@@ -19,6 +22,8 @@
   <strong>Score:</strong>
   <%= @article.score %>
 </p>
+	</div> <!-- end of well class -->
+</div> <!-- end of col class -->
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
