@@ -1,19 +1,26 @@
 <!-- _articles.html.erb -->
 <% @articles.each do | article | %>
-<div class="well">
-	<% if article.link[0..7] == "https://" %>
-		<%= link_to article.title, "http://#{article.link[7..-1]}" %>
-	<%elsif article.link[0..6] == "http://" %>
-		<%= link_to article.title, "http://#{article.link[6..-1]}" %>
-	<%else%>
-		<%= link_to article.title, "http://#{article.link}" %>
-	<%end%>
-	<h6>Submitted at <%= article.created_at.strftime("%b %d, %Y") %></h6>
-	<% if user_signed_in? == true %>
-		<% if current_user.id != nil && article.user_id == current_user.id %>
-				<%= link_to 'Edit', edit_article_path(article) %>
-				<%= link_to "Delete", article, method: :delete, data: {confirm: 'You sure?'} %>
+<div class="row">
+	<div class="well col-md-1">
+		<%= article.score %>
+	</div>
+	<div class="well col-md-9">
+		<% if article.link[0..7] == "https://" %>
+			<%= link_to article.title, "http://#{article.link[7..-1]}" %>
+		<%elsif article.link[0..6] == "http://" %>
+			<%= link_to article.title, "http://#{article.link[6..-1]}" %>
+		<%else%>
+			<%= link_to article.title, "http://#{article.link}" %>
 		<%end%>
-	<%end%>
+		<h6>Submitted at <%= article.created_at.strftime("%b %d, %Y") %></h6>
+	</div>
+	<div class="well">
+		<% if user_signed_in? == true %>
+			<% if current_user.id != nil && article.user_id == current_user.id %>
+					<%= link_to 'Edit', edit_article_path(article) %>
+					<%= link_to "Delete", article, method: :delete, data: {confirm: 'You sure?'} %>
+			<%end%>
+		<%end%>
+	</div>
 </div>
 <%end%>
