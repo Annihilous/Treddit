@@ -3,7 +3,13 @@
 <div class="panel">
 	<div class="row">
 		<div class="well col-md-1">
-			<%= article.score %>
+			<% if user_signed_in? == true %>
+				<p><%= link_to "+", vote_up_path(id: article.id) %></p>
+				<p><%= article.score %></p>
+				<p><%= link_to "-", vote_down_path(id: article.id) %></p>
+			<% else %>
+				<%= article.score %>
+			<%end%>
 		</div>
 		<div class="well col-md-9">
 			<% if article.link[0..7] == "https://" %>
@@ -13,7 +19,7 @@
 			<%else%>
 				<%= link_to article.title, "http://#{article.link}" %>
 			<%end%>
-			<h6>Submitted at <%= article.created_at.strftime("%b %d, %Y") %></h6>
+			Submitted at <%= article.created_at.strftime("%b %d, %Y") %>
 		</div>
 		<div class="well">
 			<% if user_signed_in? == true %>
