@@ -16,6 +16,20 @@ class ArticlesController < ApplicationController
   def show
   end
 
+  def vote_up
+    @article = Article.find(params[:id])
+    @article.score += 1
+    @article.save
+    redirect_to root_path
+  end
+
+  def vote_down
+    @article = Article.find(params[:id])
+    @article.score -= 1
+    @article.save
+    redirect_to root_path
+  end
+
   # GET /articles/new
   def new
     @article = Article.new
