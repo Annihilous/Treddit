@@ -12,8 +12,6 @@
 			<%end%>
 		</div>
 		<div class="well col-md-9">
-			<h6>Submitted <%= (Time.now.to_time - article.created_at.to_time)/1.hour %> hours ago</h6>
-			<small><%= time_ago_in_words(article.created_at) %> ago</small>
 			<% if article.link[0..7] == "https://" %>
 				<%= link_to article.title, "http://#{article.link[7..-1]}" %>
 			<%elsif article.link[0..6] == "http://" %>
@@ -21,10 +19,14 @@
 			<%else%>
 				<%= link_to article.title, "http://#{article.link}" %>
 			<%end%>
-			Submitted at <%= article.created_at.strftime("%b %d, %Y") %>
+			</br>
+			<small>submitted <%= time_ago_in_words(article.created_at) %> ago by <%=article.user.email%>
+			</small>%= image_tag(current_user.avatar.url(:thumb)) %>
+<!-- 			Submitted at <%= article.created_at.strftime("%b %d, %Y") %> -->
 		</div>
 		<div class="well">
 			<% if user_signed_in? == true %>
+			<
 				<% if current_user.id != nil && article.user_id == current_user.id %>
 						<%= link_to 'Edit', edit_article_path(article) %>
 						<%= link_to "Delete", article, method: :delete, data: {confirm: 'You sure?'} %>

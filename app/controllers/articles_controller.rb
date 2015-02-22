@@ -9,11 +9,13 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
+    @users = User.all
   end
 
   # GET /articles/1
   # GET /articles/1.json
   def show
+  @users = User.all
   end
 
   def vote_up
@@ -33,10 +35,12 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
+    @users = User.all
   end
 
   # GET /articles/1/edit
   def edit
+    @users = User.all
   end
 
   # POST /articles
@@ -83,6 +87,7 @@ class ArticlesController < ApplicationController
 
     def all_articles
       @articles = Article.all
+      @users = User.all
     end
 
     # Use callbacks to share common setup or constraints between actions.

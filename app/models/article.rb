@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
 
-	has_many :users
+	belongs_to :user
 	validates :link , uniqueness: true
 
 end

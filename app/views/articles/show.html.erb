@@ -16,6 +16,12 @@
 <p>
   <strong>User:</strong>
   <%= @article.user_id %>
+  <p><%= image_tag(current_user.avatar.url(:thumb)) %></p>  
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @article.user.user_handle %>
 </p>
 
 <p>

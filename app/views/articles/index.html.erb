@@ -3,6 +3,8 @@
 
 <%#= link_to 'New Article', new_article_path, class: "btn btn-danger"%>
 
+<p><%= image_tag(current_user.avatar.url(:thumb)) %></p>
+
 <h1>Listing Articles</h1>
 
 <div id="articles">
