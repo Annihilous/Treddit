@@ -1,5 +1,8 @@
 <!-- _articles.html.erb -->
-<% @articles.each do | article | %>
+
+<% sorted_list = @articles.sort_by &:created_at %>
+<% sorted_list.reverse.each do | article | %>
+
 <div class="panel">
 	<div class="row">
 		<div class="well col-md-1">
