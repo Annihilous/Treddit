@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'vote_up' => 'articles#vote_up'
   post 'vote_up' => 'articles#vote_up'
 
-    get 'vote_down' => 'articles#vote_down'
+  get 'vote_down' => 'articles#vote_down'
   post 'vote_down' => 'articles#vote_down'
 
   # The priority is based upon order of creation: first created -> highest priority.

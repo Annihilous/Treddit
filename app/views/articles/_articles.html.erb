@@ -21,12 +21,12 @@
 			<%end%>
 			</br>
 			<small>submitted <%= time_ago_in_words(article.created_at) %> ago by <%=article.user.email%>
-			</small>%= image_tag(current_user.avatar.url(:thumb)) %>
+			</small>
+
 <!-- 			Submitted at <%= article.created_at.strftime("%b %d, %Y") %> -->
 		</div>
 		<div class="well">
 			<% if user_signed_in? == true %>
-			<
 				<% if current_user.id != nil && article.user_id == current_user.id %>
 						<%= link_to 'Edit', edit_article_path(article) %>
 						<%= link_to "Delete", article, method: :delete, data: {confirm: 'You sure?'} %>
