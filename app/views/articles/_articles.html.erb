@@ -6,6 +6,7 @@
 <div class="panel">
 	<div class="row">
 		<div class="well col-md-1">
+			<div style="height:100px;">
 			<% if user_signed_in? == true %>
 				<p><%= link_to "+", vote_up_path(id: article.id) %></p>
 				<p><%= article.score %></p>
@@ -13,8 +14,10 @@
 			<% else %>
 				<%= article.score %>
 			<%end%>
+			</div> <!-- end of style -->
 		</div>
 		<div class="well col-md-9">
+			<div style="height:100px;">
 			<% if article.link[0..7] == "https://" %>
 				<%= link_to article.title, "http://#{article.link[7..-1]}" %>
 			<%elsif article.link[0..6] == "http://" %>
@@ -23,21 +26,20 @@
 				<%= link_to article.title, "http://#{article.link}" %>
 			<%end%>
 			</br>
-			<small>submitted <%= time_ago_in_words(article.created_at) %> ago by <%=article.user.email%>
+			<small>submitted <%= time_ago_in_words(article.created_at) %> ago by <%=article.user.user_handle%>
 			</small>
-
-<!-- 			Submitted at <%= article.created_at.strftime("%b %d, %Y") %> -->
-		</div>
-		<div class="well">
-			<% if user_signed_in? == true %>
-				<% if current_user.id != nil && article.user_id == current_user.id %>
+			</div> <!-- end of style -->
+		</div> <!--end of well -->
+<!-- 		<div class="well">
+			<%# if user_signed_in? == true %>
+				<%# if current_user.id != nil && article.user_id == current_user.id %>
 						<%= link_to 'Edit', edit_article_path(article) %>
 						<%= link_to "Delete", article, method: :delete, data: {confirm: 'You sure?'} %>
-				<%end%>
-			<%end%>
-		</div>
-	</div>
-</div>
+				<%#end%>
+			<%#end%>
+		</div> -->
+	</div> <!--end of row -->
+</div> <!--end of panel -->
 <%end%>
 
 
